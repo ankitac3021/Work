@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+          Begins Here
+    </title>
+    <style>
+    /*table,th{
+      border:1px solid black;
+    }*/
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Interview Management System</h1>
+    </header>
+    <article>
+
+        <div class="sidenav">
+            <a routerLink="/allCandidates">New Candidate</a>
+            <a routerLink="/inprogress">In Progress</a>
+            <a routerLink="/allCandidates">All Candidates</a>
+          </div>
+
+          <div class="main">
+            <h1> In Progress Candidate  </h1>
+           <!-- <div *ngIf="!showvalue">
+             <button class="top" (click)=show()> More Details</button> 
+            </div> -->
+              <table class="TFtable" *ngIf="candidate">
+               <tr>
+                 <!--  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <ng-container *ngIf="!isCollapse[i]">
+                  <th >CTC</th>
+                  <th >ECTC</th>
+                  <th >Notice Period</th>
+                  <th >Interviewer</th>
+                </ng-container>-->
+                </tr>
+                
+                <tr *ngFor="let user of candidate; let i=index">
+                  <ng-container *ngIf="user.Interviewstatus=='ongoing'">
+                  <td> &nbsp;ID: {{ user.CandidateId }}</td>
+                  <td> First Name: {{user.CandidateFirstName }} &nbsp;</td> 
+                  <td>Last Name: {{user.CandidateLastName}} </td>
+                  <ng-container *ngIf="isCollapse[i]">
+                  <td> CTC: {{user.CTC}}</td>
+                  <td> ECTC: {{user.ECTC}}</td>
+                  <td> Notice Period:{{user.NoticePeriod}} </td>
+                  <td> Interviewer:{{user.InterviewerName}}</td>
+                  </ng-container>
+                  <td> <button *ngIf="!isCollapse[i]" (click)="toggleCollapse(i)">More Details</button>
+                       <button *ngIf="isCollapse[i]" (click)="toggleCollapse(i)">Less Details</button>
+                  </td> 
+
+                </ng-container>
+                </tr> 
+              </table>
+             <!-- <div *ngIf="showvalue"> 
+                  <button class="bottom" (click)=hide()> Less Details</button>
+              </div> -->
+            </div>
+  </article>
+
+    <footer>
+        <details>
+            <h4>Developed by: NEC</h4>
+        </details>
+    </footer>
+  </body>
+</html>
